@@ -2,7 +2,7 @@
 
 describe('Login', () => {
 
-    it('Deve fazer login com sucesso', () => {
+    it('Deve realizar login com sucesso', () => {
         cy.request({
             method: 'POST',
             url: 'login',

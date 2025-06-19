@@ -26,3 +26,13 @@ Cypress.Commands.add('token', (email, senha) => {
           failOnStatusCode: false
     })
  })
+
+ Cypress.Commands.add('alterarUsuario', (nome) => {
+    cy.request({
+        method: 'PUT',
+        url: 'usuario',
+        body: {
+            "nome": nome 
+        }
+    })
+ })
