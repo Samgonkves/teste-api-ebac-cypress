@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import '.support/commands'
+import alterarUsuario from "../support/commands";
 
 describe('Testes da Funcionalidade Usuários Serverest', () => {
    let token
@@ -57,10 +57,12 @@ describe('Testes da Funcionalidade Usuários Serverest', () => {
 
   it.only('Deve editar um usuário previamente cadastrado - PUT', () => {
   let nome = `Fulanin ${Math.floor(Math.random() * 100000000)}`
+  cy.alterarUsuario(nome)
+  .then(response =>{
   let id = response.body._id
     cy.request ({
     method: 'PUT',
-    url: `usuarios/${id}`,
+    url:'usuarios' + '/8TjxdWoCkXqujbqL',
     headers: {authorization:token},
     body:{
       "nome": nome,
@@ -73,6 +75,7 @@ describe('Testes da Funcionalidade Usuários Serverest', () => {
             expect(response.body.message).to.equal('Registro alterado com sucesso')
             cy.log(response.body.authorization)
     }); 
+   })
   })
 
   it('Deve deletar um usuário previamente cadastrado - DELETE', () => {
