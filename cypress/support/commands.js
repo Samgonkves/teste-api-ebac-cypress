@@ -27,12 +27,17 @@ Cypress.Commands.add('token', (email, senha) => {
     })
  })
 
- Cypress.Commands.add('alterarUsuario', (nome) => {
+ Cypress.Commands.add('cadastrarUsuario' , (nome, email, senha) =>{
     cy.request({
-        method: 'PUT',
-        url: 'usuario',
-        body: {
-            "nome": nome 
-        }
+        method: 'POST', 
+        url: 'usuarios', 
+        body:{
+            "nome": nome,
+            "email": email,
+            "password": senha,
+            "administrador": "true"
+        },
+        failOnStatusCode: false
     })
- })
+    })
+
